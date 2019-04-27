@@ -1,0 +1,59 @@
+body{
+  background: #373737 url("../resources/css/bg.png") 0 0 repeat; /*coloca imagem no fundo*/
+  /*margin: 0;*/
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  line-height: 1.5; /*espaço das entre-linhas*/
+}
+
+/*mudar o background do panel grid */
+.ui-custompanelgrid, .ui-custompanelgrid td {
+font-weight: bold;
+background: #373737 url("../resources/css/bg.png") 0 0 repeat; /*coloca imagem no fundo*/
+/*background-color: #a8a7a8 !important;*/  /*outra forma*/
+font-size: 25px; /*tamanho da fonte do panelGrid*/
+
+
+}
+.logo{
+color:gray;
+font-size: 50px;
+margin: auto;
+width:100%;
+border:medium black solid;
+margin-bottom: 20px;
+}
+
+.cadastro {
+background:silver;
+font-family:"Comic Sans MS";
+float: left;
+width: 30%;
+ 
+}
+
+.tabela {
+font-family:"Kristen ITC";
+background:silver;
+/*margin-left: 35%;*/
+float: left;
+}
+
+.margem{
+  background-color: aquamarine;
+  position: relative;
+  margin-top: 50px; /*Altura*/
+  margin-left: 400px; /*largura da esquerda*/
+  margin-right: 50px;
+  width: 400px;
+  padding-right: 32px;
+  font-weight: 1;
+  color: #a8a7a8;
+  /*text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.8);*/
+}
+
+.cor{
+    color: white;
+}
