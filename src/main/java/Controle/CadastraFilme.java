@@ -23,11 +23,13 @@ public class CadastraFilme {
     FilmesDAO con = new FilmesDAO();
     
    
-    public CadastraFilme() {
-        //gambiarra();
+    
+    public String telaAluguel(){
+        return "aluguel";
     }
     
     public void exibeFilmes(){
+        lista.clear();
         lista.addAll(con.listFilmes());
     }
     

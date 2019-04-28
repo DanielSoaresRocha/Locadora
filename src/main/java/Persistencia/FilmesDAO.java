@@ -82,7 +82,7 @@ public class FilmesDAO {
             while (rs.next()) {
                 int x = rs.getInt(1);
                 if (x == id) {
-                    System.out.println("Filme encontrado");
+                    System.out.println("FILME ENCONTRADO");
                     Filme f = new Filme();
                     f.setId(rs.getInt(1));
                     f.setTitulo(rs.getString(2));
@@ -90,7 +90,7 @@ public class FilmesDAO {
                     f.setNota(rs.getInt(4));
                     f.setDescricao(rs.getString(5));
                     f.setQuantidade(rs.getInt(6));
-                    
+
                     return f;
                 }
             }
@@ -101,6 +101,52 @@ public class FilmesDAO {
         System.out.println("Vendedor não foi encontrado");
         con.closeConnection();
         return null;
+    }
+
+    //diminui 1 no estoque
+    public boolean diminuiEstoque(int id) {
+        con.dbConnection();
+        String query = "update filmes \n"
+                + "set quantidade = quantidade -1\n"
+                + "where idfilmes = ?\n"
+                + "and quantidade > 0;";
+        try {
+            PreparedStatement pst = con.getConnection().prepareStatement(query);
+            pst.setInt(1, id);
+            
+            pst.executeUpdate();
+            System.out.println("Filme editado");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("n deu certo");
+            //Logger.getLogger(PVendedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        con.closeConnection();
+        return false;
+    }
+    
+    //diminui 1 no estoque
+    public boolean aumentaEstoque(int id) {
+        con.dbConnection();
+        String query = "update filmes \n"
+                + "set quantidade = quantidade +1\n"
+                + "where idfilmes = ?\n"
+                + "and quantidade > 0;";
+        try {
+            PreparedStatement pst = con.getConnection().prepareStatement(query);
+            pst.setInt(1, id);
+            
+            pst.executeUpdate();
+            System.out.println("Filme editado");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("n deu certo");
+            //Logger.getLogger(PVendedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        con.closeConnection();
+        return false;
     }
 
 }

@@ -53,7 +53,7 @@
                     </p:inputText> 
 
                     <p:outputLabel />
-                    <p:commandButton type="submit" value="enviar" action="#{cadastrar.cadastrarFilme}"/>
+                    <p:commandButton type="submit" value="enviar" action="#{cadastrar.cadastrarFilme()}"/>
 
                 </p:panelGrid>
                 <h:message id="m1" for="fTitulo" style="color:red"/>
@@ -95,6 +95,11 @@
             </p:dataTable>
 
         </div>
+        <h:form>
+        <p:commandButton value="Aluguel" action="#{cadastrar.telaAluguel()}" />
+            
+        </h:form>
+       
     </h:body>
 </html>
 

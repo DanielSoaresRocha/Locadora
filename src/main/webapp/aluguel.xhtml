@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Aluguel</title>
         <link rel="stylesheet" href="resources/css/style.css"/>
     </h:head>
     <h:body>
@@ -14,8 +14,10 @@
         </div>
         
        #{cadastrar.exibeFilmes()}
-        <div class="tabela">
-            
+        
+       <div class="tabela">
+           <h:form>
+               
             <p:dataTable id="dataTable" value="#{cadastrar.lista}" var="f" >
                 <p:column>
                     <f:facet name ="header">Titulo </f:facet>
@@ -45,12 +47,26 @@
                 <p:column>
                     <f:facet name="header">Ação</f:facet>
                     
-                    <p:commandButton value="Adicionar" action="#{aluguel.inserirCesta(f.id)}" />
+                    <h:commandButton value="Adicionar" action="#{aluguel.inserirCesta(f.id)}"
+                                     > 
+                                                                                              
+                </h:commandButton>
                 </p:column>
 
             </p:dataTable>
+           </h:form>
 
         </div>
+        <p:toolbar>
+            <p:toolbarGroup>
+                <p:commandButton value="ver cesta" action="#{aluguel.verCesta()}" /> 
+                <p:commandButton value="Voltar" action="#{aluguel.telaCadastrar()}" /> 
+                
+            </p:toolbarGroup> 
+            
+        </p:toolbar>
+        
+        
     </h:body>
 </html>
 
