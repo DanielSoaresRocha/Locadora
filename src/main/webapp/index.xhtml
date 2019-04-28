@@ -22,35 +22,49 @@
 
         <h1> <p:outputLabel style="color: grey" value="Cadastre seu filme:" /> </h1> <br/>
 
+
         <div class="cadastro">
-            <form>
+            <h:form> 
                 <p:panelGrid class="ui-custompanelgrid" columns="2"> 
 
                     <p:outputLabel style="color: #ffffff" value="Titulo: " />
-                    <p:inputText id="fTitulo" value="#{cadastrar.titulo}" required="true" requiredMessage="É obrigatório colocar um titulo"/>
-
+                    <p:inputText id="fTitulo" value="#{cadastrar.titulo}" required="true" requiredMessage="É obrigatório colocar um titulo"/>                              
+                    
+                    
                     <p:outputLabel style="color: #ffffff" value="Data de lançamento: " />
                     <p:inputText id="fData" value="#{cadastrar.data}" >
-                                 <f2:convertDateTime pattern="dd/MM/yyyy" for="fData" />
+                        <f2:convertDateTime pattern="dd/MM/yyyy" for="fData" />
                     </p:inputText>
 
                     <p:outputLabel style="color: #ffffff" value="Nota: " />
-                    <p:inputText id="fNota" value="#{cadastrar.nota}"/>
+                    <p:inputText id="fNota" value="#{cadastrar.nota}" >
+                        <f2:validateDoubleRange maximum="5" minimum="1" />
+                        <f2:convertNumber type="number"/>
+                    </p:inputText> 
 
                     <p:outputLabel style="color: #ffffff" value="Descrição: " />
-                    <p:inputText id="fDescricao" value="#{cadastrar.descricao}"/>
+                    <p:inputText id="fDescricao" value="#{cadastrar.descricao}">
+                                 <f2:validateLength minimum="10" />        
+                    </p:inputText> 
 
                     <p:outputLabel style="color: #ffffff" value="Quantidade: " />
-                    <p:inputText id="fQuantidade" value="#{cadastrar.quantidade}"/>
+                    <p:inputText id="fQuantidade" value="#{cadastrar.quantidade}" >
+                                 <f2:validateDoubleRange  minimum="0" />      
+                    </p:inputText> 
 
                     <p:outputLabel />
-                    <p:commandButton value="enviar" action="#{cadastrar.cadastrarFilme()}"  />
+                    <p:commandButton type="submit" value="enviar" action="#{cadastrar.cadastrarFilme}"/>
 
                 </p:panelGrid>
-            </form>
+                <h:message id="m1" for="fTitulo" style="color:red"/>
+                <h:message id="m2" for="fData" style="color:red"/>
+                <h:message id="m3" for="fNota" style="color:red"/>
+                <h:message id="m4" for="fDescricao" style="color:red"/>
+                <h:message id="m5" for="fQuantidade" style="color:red"/>
+            </h:form>
 
         </div>
-
+        <br/> <br/>
         <div class="tabela">
             <p:dataTable id="dataTable" value="#{cadastrar.lista}" var="f" >
                 <p:column>
@@ -81,14 +95,6 @@
             </p:dataTable>
 
         </div>
-
-        <h:form>
-
-
-
-
-
-        </h:form>
     </h:body>
 </html>
 

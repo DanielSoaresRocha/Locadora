@@ -15,11 +15,11 @@ public class FilmesDAO {
     private final ConexaoDAO con = new ConexaoDAO();
 
     public FilmesDAO() {
-        
+
     }
-    
+
     public ArrayList<Filme> listFilmes() {
-        
+
         ArrayList<Filme> lista = new ArrayList<>();
         con.dbConnection();
         String query = "select *\n"
@@ -37,7 +37,7 @@ public class FilmesDAO {
                 f.setDescricao(rs.getString(5));
                 f.setQuantidade(rs.getInt(6));
                 lista.add(f);
-                
+
             }
             // DESCONECTA
             con.closeConnection();
@@ -48,8 +48,8 @@ public class FilmesDAO {
         return lista;
 
     }
-    
-     //Inserindo venda no banco
+
+    //Inserindo venda no banco
     public void insertIntoFilmes(String titulo, Date data, int nota, String descricao, int quantidade) {
         System.out.println(">>>>ENTROU EM insetIntoFilmes<<<<");
         con.dbConnection();
@@ -62,13 +62,45 @@ public class FilmesDAO {
             pst.setString(4, descricao);
             pst.setInt(5, quantidade);
             pst.executeUpdate();
-            
+
             System.out.println("Filme adicionado");
         } catch (SQLException ex) {
             //Logger.getLogger(PVendedor.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("N deu certo");
         }
         con.closeConnection();
+    }
+
+    //Tenta encontrar um filme
+    public Filme encontrar(int id) {
+        con.dbConnection();
+        String query = " SELECT * FROM filmes;";
+        try {
+
+            PreparedStatement pst = con.getConnection().prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                int x = rs.getInt(1);
+                if (x == id) {
+                    System.out.println("Filme encontrado");
+                    Filme f = new Filme();
+                    f.setId(rs.getInt(1));
+                    f.setTitulo(rs.getString(2));
+                    f.setData(rs.getDate(3));
+                    f.setNota(rs.getInt(4));
+                    f.setDescricao(rs.getString(5));
+                    f.setQuantidade(rs.getInt(6));
+                    
+                    return f;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("LoginFromVendedor não deu certo");
+            //Logger.getLogger(VendedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Vendedor não foi encontrado");
+        con.closeConnection();
+        return null;
     }
 
 }

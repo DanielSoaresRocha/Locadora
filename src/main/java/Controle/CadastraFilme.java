@@ -1,7 +1,6 @@
 package Controle;
 
 import Modelo.Filme;
-import Persistencia.ConexaoDAO;
 import Persistencia.FilmesDAO;
 
 import java.util.ArrayList;
