@@ -36,8 +36,7 @@ public class CadastraFilme {
     public void cadastrarFilme(){
         System.out.println("ENTROU EM CADASTRARFILME");
         con.insertIntoFilmes(titulo, data, nota, descricao, quantidade);
-        lista.clear();
-        lista.addAll(con.listFilmes());
+        exibeFilmes();
     }
 
     public String getTitulo() {
