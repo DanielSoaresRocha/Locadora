@@ -1,2 +1,6 @@
-Controle/Conectando.class
-Persistencia/ConexaoDAO.class
+Controle\Conectando.class
+Modelo\Filme.class
+Persistencia\FilmesDAO.class
+Controle\AluguelController.class
+Controle\CadastraFilme.class
+Persistencia\ConexaoDAO.class

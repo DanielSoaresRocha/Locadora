@@ -53,7 +53,7 @@
                     </p:inputText> 
 
                     <p:outputLabel />
-                    <p:commandButton type="submit" value="enviar" action="#{cadastrar.cadastrarFilme()}"/>
+                    <p:commandButton type="submit" value="enviar" action="#{cadastrar.cadastrarFilme()}" update="@form" />
 
                 </p:panelGrid>
                 <h:message id="m1" for="fTitulo" style="color:red"/>
