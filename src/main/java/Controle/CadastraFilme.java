@@ -4,7 +4,7 @@ import Modelo.Filme;
 import Persistencia.FilmesDAO;
 
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -33,10 +33,26 @@ public class CadastraFilme {
         lista.addAll(con.listFilmes());
     }
     
+    public void cancelar(){
+        System.out.println("Entrou em cancelar");
+        titulo = "";
+        data = null;
+        nota = 0;
+        descricao = "";
+        quantidade = 0;
+        System.out.println("Titulo = " + titulo);
+    }
+            
+    
     public void cadastrarFilme(){
         System.out.println("ENTROU EM CADASTRARFILME");
-        con.insertIntoFilmes(titulo, data, nota, descricao, quantidade);
-        exibeFilmes();
+        //covertendo java.util.date para java.sql.date
+        data = new java.util.Date();
+        java.sql.Date dataSql = new java.sql.Date(data.getTime());
+        
+        con.insertIntoFilmes(titulo, dataSql, nota, descricao, quantidade);
+        
+        //exibeFilmes();
     }
 
     public String getTitulo() {

@@ -23,7 +23,7 @@ public class FilmesDAO {
         ArrayList<Filme> lista = new ArrayList<>();
         con.dbConnection();
         String query = "select *\n"
-                + "from filmes;";
+                + "from filmes order by titulo;";
         try {
             PreparedStatement pst = con.getConnection().prepareStatement(query);
             ResultSet rs = pst.executeQuery();
