@@ -47,10 +47,10 @@
                 <p:column>
                     <f:facet name="header">Ação</f:facet>
                     
-                    <h:commandButton value="Adicionar" action="#{aluguel.inserirCesta(f.id)}"
-                                     > 
+                    <p:commandButton disabled="#{f.quantidade le 0}" value="Adicionar" action="#{aluguel.inserirCesta(f.id)}"
+                                     update="dataTable"> 
                                                                                               
-                </h:commandButton>
+                </p:commandButton>
                 </p:column>
 
             </p:dataTable>

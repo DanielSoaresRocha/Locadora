@@ -46,9 +46,10 @@
                 <p:column>
                     <f:facet name="header">Ação</f:facet>
                     
-                    <h:commandButton value="remover" action="#{aluguel.removeCesta(f.id)}"> 
+                    <p:commandButton value="remover" action="#{aluguel.removeCesta(f.id)}"
+                                     update="dataTable"> 
                                                                                             
-                </h:commandButton>
+                </p:commandButton>
                 </p:column>
 
             </p:dataTable>

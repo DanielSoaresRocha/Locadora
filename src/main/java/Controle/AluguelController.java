@@ -13,8 +13,8 @@ import javax.faces.component.html.HtmlCommandButton;
 @SessionScoped
 
 public class AluguelController {
-
-    private HtmlCommandButton botao;
+    CadastraFilme c = new CadastraFilme();
+    //private HtmlCommandButton botao;
     private ArrayList<Filme> cesta = new ArrayList<>();
     private int id;
 
@@ -29,7 +29,7 @@ public class AluguelController {
                 if (cesta.get(i).getId() == f.getId()) {
                     cesta.get(i).setQuantidade(cesta.get(i).getQuantidade() + 1);//incrementa +1 ao existente
                     con.diminuiEstoque(f.getId());
-                    
+
                     return true; //sai da função
                 }
             }
@@ -37,37 +37,49 @@ public class AluguelController {
             f.setQuantidade(1); //Adicionando a primeira vez
             cesta.add(f);
             con.diminuiEstoque(f.getId());
+            c.exibeFilmes();
 
         } else {
+            //botao.setDisabled(true);
             System.out.println("estoque não disponível");
             //botao.setDisabled(true);
         }
         return true;
     }
 
-    public void removeCesta(int id) {
-        
+    public Boolean verificaBotao(int num) {
+        System.out.println("ENTROU AQUIII"+ num);
+        if (num >= 1) {
+            return false;
+
+        } else {
+            return true;
+        }
+    }
+
+    public void removeCesta(int id){
+
         Filme f = con.encontrar(id);
         for (int i = 0; i < cesta.size(); i++) {
             if (cesta.get(i).getId() == f.getId()) {
-                if(cesta.get(i).getQuantidade() > 1){ //se a quantidade for maior que 1
+                if (cesta.get(i).getQuantidade() > 1) { //se a quantidade for maior que 1
                     System.out.println("PRIMEIRO IF");
                     cesta.get(i).setQuantidade(cesta.get(i).getQuantidade() - 1); //diminui quantidade na cesta
-                }else{
+                } else {
                     System.out.println("SEGUNDO IF");
                     cesta.remove(i); //remove da cesta
-                    
+
                 }
-                    
+
             }
         }
         con.aumentaEstoque(id); //devolve 1 ao estoque
     }
-    
-    public String telaCadastrar(){
+
+    public String telaCadastrar() {
         return "index";
     }
-     
+
     //vai para a tela da cesta
     public String verCesta() {
         return "cesta";
@@ -76,14 +88,6 @@ public class AluguelController {
     //volta para a tela de aluguel
     public String verFilmes() {
         return "aluguel";
-    }
-
-    public HtmlCommandButton getBotao() {
-        return botao;
-    }
-
-    public void setBotao(HtmlCommandButton botao) {
-        this.botao = botao;
     }
 
     public int getId() {

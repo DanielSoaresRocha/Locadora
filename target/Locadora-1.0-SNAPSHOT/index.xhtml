@@ -32,11 +32,11 @@
 
 
                     <p:outputLabel style="color: #ffffff" value="Data de lançamento: " />
-                    <p:inputText id="fData" value="#{cadastrar.data}" 
+                    <p:inputMask mask="99/99/9999" id="fData" value="#{cadastrar.data}" 
                                  requiredMessage="Formato de data inválido">
                         <f2:convertDateTime pattern="dd/MM/yyyy" for="fData" />
 
-                    </p:inputText>
+                    </p:inputMask>
 
                     <p:outputLabel style="color: #ffffff" value="Nota: " />
                     <p:inputText id="fNota" value="#{cadastrar.nota}" 
