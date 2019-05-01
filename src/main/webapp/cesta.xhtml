@@ -9,59 +9,71 @@
         <link rel="stylesheet" href="resources/css/style.css"/>
     </h:head>
     <h:body>
-        
+
         <div class="logo" align="center">
             <p:outputLabel value="Cesta de compras" />
         </div>
-        
+
         <div class="tabela">
-           <h:form>
-               
-               <p:dataTable id="dataTable" value="#{aluguel.cesta}" var="f" >
-                <p:column>
-                    <f:facet name ="header">Titulo </f:facet>
-                        #{f.titulo}
-                </p:column>
+            <h:form>
 
-                <p:column>
-                    <f:facet name="header">Data </f:facet>
-                        #{f.data}
-                </p:column>
+                <p:dataTable id="dataTable" value="#{aluguel.cesta}" var="f" >
+                    <p:column>
+                        <f:facet name ="header">Titulo </f:facet>
+                            #{f.titulo}
+                    </p:column>
 
-                <p:column>
-                    <f:facet name="header" >Nota </f:facet>
-                        #{f.nota}
-                </p:column>
+                    <p:column>
+                        <f:facet name="header">Data </f:facet>
+                            #{f.data}
+                    </p:column>
 
-                <p:column>
-                    <f:facet name="header" >Descricao </f:facet>
-                        #{f.descricao}
-                </p:column>
+                    <p:column>
+                        <f:facet name="header" >Nota </f:facet>
+                            #{f.nota}
+                    </p:column>
 
-                <p:column>
-                    <f:facet name="header" >Quantidade </f:facet> 
-                        #{f.quantidade}
-                </p:column>
-                
-                <p:column>
-                    <f:facet name="header">Ação</f:facet>
-                    
-                    <p:commandButton value="remover" action="#{aluguel.removeCesta(f.id)}"
-                                     update="dataTable"> 
-                                                                                            
-                </p:commandButton>
-                </p:column>
+                    <p:column>
+                        <f:facet name="header" >Descricao </f:facet>
+                            #{f.descricao}
+                    </p:column>
 
-            </p:dataTable>
-           </h:form>
+                    <p:column>
+                        <f:facet name="header" >Quantidade </f:facet> 
+                            #{f.quantidade}
+                    </p:column>
 
+                    <p:column>
+                        <f:facet name="header">Ação</f:facet>
+
+                        <p:commandButton value="remover" action="#{aluguel.removeCesta(f.id)}"
+                                         update="dataTable"> 
+
+                        </p:commandButton>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
         </div>
+        <h:form>
+            
+        <p:toolbar class="ui-custompanelgrid">
+            <p:toolbarGroup style="margin-right: 10%">
+                <p:outputLabel style="color: #ffffff" value="Obs: Cada filme custa 5 R$   " /> 
+                <p:outputLabel id="label" style="color: red" value=" VALOR TOTAL = #{aluguel.label}" /> <br/>
+                <p:commandButton value="Limpar" />
+                <p:commandButton value="Calcular total" action="#{aluguel.alteraLabel()}" update="label"/>
+                <p:commandButton value="Finalizar" />
+            </p:toolbarGroup>
+        </p:toolbar>
+        </h:form>
+
         <p:commandButton value="Voltar" action="#{aluguel.verFilmes()}" />
-    
-    
-    
+
+
+
     </h:body>
-    
-    
+
+
 </html>
 

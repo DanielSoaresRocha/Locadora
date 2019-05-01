@@ -8,13 +8,17 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.html.HtmlCommandButton;
+//import javax.faces.component.html.HtmlOutputLabel;
 
 @ManagedBean(name = "aluguel")
 @SessionScoped
 
 public class AluguelController {
+
     CadastraFilme c = new CadastraFilme();
-    //private HtmlCommandButton botao;
+    private int label;
+    private HtmlCommandButton botao;
+
     private ArrayList<Filme> cesta = new ArrayList<>();
     private int id;
 
@@ -47,17 +51,20 @@ public class AluguelController {
         return true;
     }
 
-    public Boolean verificaBotao(int num) {
-        System.out.println("ENTROU AQUIII"+ num);
-        if (num >= 1) {
-            return false;
+    public void calcularTotal() {
 
-        } else {
-            return true;
-        }
     }
 
-    public void removeCesta(int id){
+    public void alteraLabel() {
+        int valor = 0;
+        for(int i = 0; i < cesta.size(); i++){
+            valor = valor + cesta.get(i).getQuantidade();
+        }
+        label = valor*5;
+       
+    }
+
+    public void removeCesta(int id) {
 
         Filme f = con.encontrar(id);
         for (int i = 0; i < cesta.size(); i++) {
@@ -88,6 +95,14 @@ public class AluguelController {
     //volta para a tela de aluguel
     public String verFilmes() {
         return "aluguel";
+    }
+
+    public int getLabel() {
+        return label;
+    }
+
+    public void setLabel(int label) {
+        this.label = label;
     }
 
     public int getId() {
