@@ -51,11 +51,8 @@ public class AluguelController {
         return true;
     }
 
-    public void calcularTotal() {
-
-    }
-
     public void alteraLabel() {
+        System.out.println("ENTROU EM ALTERA LABEL");
         int valor = 0;
         for(int i = 0; i < cesta.size(); i++){
             valor = valor + cesta.get(i).getQuantidade();
@@ -83,6 +80,9 @@ public class AluguelController {
         con.aumentaEstoque(id); //devolve 1 ao estoque
     }
 
+    public void limparCesta(){
+        cesta.clear();
+    }
     public String telaCadastrar() {
         return "index";
     }
@@ -96,7 +96,11 @@ public class AluguelController {
     public String verFilmes() {
         return "aluguel";
     }
-
+    //Vai para a tela de finalização
+    public String finalizar() {
+        
+        return "Finalizar";
+    }
     public int getLabel() {
         return label;
     }

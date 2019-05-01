@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Finalização</title>
+        <link rel="stylesheet" href="resources/css/style.css"/>
+    </h:head>
+    <h:body>
+            #{aluguel.alteraLabel()}
+            #{aluguel.limparCesta()}
+        <div class="logo" align="center">
+            <p:outputLabel value="Compra finalizada" />
+        </div>
+
+        <div class="ui-custompanelgrid" >
+            <p:outputLabel style="color: #ffffff" value="A compra foi finalizada" /> <br/>
+            <p:outputLabel style="color: #ffffff" value="O total a ser pago é: #{aluguel.label} R$" /> <br/>
+            <h:form>
+
+                <p:commandButton value="Tela inicial" action="#{aluguel.telaCadastrar()}" />
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
