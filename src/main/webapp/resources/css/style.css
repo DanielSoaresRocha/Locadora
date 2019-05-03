@@ -1,4 +1,4 @@
-body{
+﻿body{
   background: #373737 url("../resources/image/bg.png") 0 0 repeat; /*coloca imagem no fundo*/
   /*margin: 0;*/
   padding: 0;
@@ -23,9 +23,9 @@ font-weight: bold;
 background: #373737 url("../resources/css/bg.png") 0 0 repeat; /*coloca imagem no fundo*/
 /*background-color: #a8a7a8 !important;*/  /*outra forma*/
 font-size: 25px; /*tamanho da fonte do panelGrid*/
-float: right;
+float: left;
 width: 50%;
-height: 20px;
+height: 80px;
 }
 
 
