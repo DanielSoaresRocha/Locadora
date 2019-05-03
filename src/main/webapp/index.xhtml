@@ -25,10 +25,11 @@
 
         <div class="cadastro">
             <h:form> 
-                <p:panelGrid class="ui-custompanelgrid" columns="2"> 
+                <p:panelGrid id ="panelGrid" class="ui-custompanelgrid" columns="2"> 
 
                     <p:outputLabel style="color: #ffffff" value="Titulo: " />
-                    <p:inputText id="fTitulo" value="#{cadastrar.titulo}" required="true" requiredMessage="É obrigatório colocar um titulo"/>                              
+                    <p:inputText id="fTitulo" value="#{cadastrar.titulo}" required="true" 
+                                 requiredMessage="É obrigatório colocar um titulo" binding="#{cadastrar.text}"/>                              
 
 
                     <p:outputLabel style="color: #ffffff" value="Data de lançamento: " />
@@ -61,7 +62,7 @@
                 <p:toolbar class="ui-custompanelgrid">
                     <p:toolbarGroup style="margin-right: 10%">
                         <p:commandButton type="submit" value="enviar" action="#{cadastrar.cadastrarFilme()}" update="@form" />
-                        <p:commandButton value="Cancelar" action="#{cadastrar.cancelar()}" update="@form" immediate="true" />
+                        <p:commandButton value="Cancelar" action="#{cadastrar.cancelar()}" update="@all" immediate="true" />
 
                     </p:toolbarGroup>
                 </p:toolbar>

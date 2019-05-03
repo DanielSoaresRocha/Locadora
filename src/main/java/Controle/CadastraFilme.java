@@ -8,6 +8,8 @@ import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.html.HtmlInputText;
+
 
 @ManagedBean(name = "cadastrar")
 @ViewScoped
@@ -18,6 +20,8 @@ public class CadastraFilme {
     private int nota;
     private String descricao;
     private int quantidade;
+    
+    private HtmlInputText text;
     
     private ArrayList<Filme> lista = new ArrayList<>();
     FilmesDAO con = new FilmesDAO();
@@ -40,7 +44,10 @@ public class CadastraFilme {
         nota = 0;
         descricao = "";
         quantidade = 0;
-        System.out.println("Titulo = " + titulo);
+        
+        text.setLabel("");
+        text.setTitle("entrou");
+       
     }
             
     
@@ -103,4 +110,13 @@ public class CadastraFilme {
         this.lista = lista;
     }
 
+    public HtmlInputText getText() {
+        return text;
+    }
+
+    public void setText(HtmlInputText text) {
+        this.text = text;
+    }
+
+    
 }

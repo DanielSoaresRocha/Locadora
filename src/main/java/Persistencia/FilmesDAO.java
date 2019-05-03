@@ -113,7 +113,7 @@ public class FilmesDAO {
         try {
             PreparedStatement pst = con.getConnection().prepareStatement(query);
             pst.setInt(1, id);
-            
+
             pst.executeUpdate();
             System.out.println("Filme editado");
             return true;
@@ -125,7 +125,7 @@ public class FilmesDAO {
         con.closeConnection();
         return false;
     }
-    
+
     //diminui 1 no estoque
     public boolean aumentaEstoque(int id) {
         con.dbConnection();
@@ -136,6 +136,29 @@ public class FilmesDAO {
         try {
             PreparedStatement pst = con.getConnection().prepareStatement(query);
             pst.setInt(1, id);
+
+            pst.executeUpdate();
+            System.out.println("Filme editado");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("n deu certo");
+            //Logger.getLogger(PVendedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        con.closeConnection();
+        return false;
+    }
+
+    //devolver ao estoque
+    public boolean devolveEstoque(int qtd, int id) {
+        con.dbConnection();
+        String query = "update filmes F\n"
+                + "set quantidade = quantidade + ?\n"
+                + "where F.idfilmes = ?;";
+        try {
+            PreparedStatement pst = con.getConnection().prepareStatement(query);
+            pst.setInt(1, qtd);
+            pst.setInt(2,id);
             
             pst.executeUpdate();
             System.out.println("Filme editado");

@@ -61,7 +61,7 @@
             <p:toolbarGroup style="margin-right: 10%">
                 <p:outputLabel style="color: #ffffff" value="Obs: Cada filme custa 5 R$   " /> 
                 <p:outputLabel id="label" style="color: red" value=" VALOR TOTAL = #{aluguel.label}" /> <br/>
-                <p:commandButton value="Limpar" />
+                <p:commandButton value="Limpar" action="#{aluguel.limparCesta()}" update="@all" />
                 <p:commandButton value="Calcular total" action="#{aluguel.alteraLabel()}" update="label"/>
                 <p:commandButton value="Finalizar" action="#{aluguel.finalizar()}"/>
             </p:toolbarGroup>

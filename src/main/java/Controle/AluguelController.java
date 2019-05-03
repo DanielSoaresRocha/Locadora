@@ -81,8 +81,13 @@ public class AluguelController {
     }
 
     public void limparCesta(){
+        for (Filme cesta1 : cesta) {
+            con.devolveEstoque(cesta1.getQuantidade(),cesta1.getId());
+            
+        }
         cesta.clear();
     }
+    
     public String telaCadastrar() {
         return "index";
     }
