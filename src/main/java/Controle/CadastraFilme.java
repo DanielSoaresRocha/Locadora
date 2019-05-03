@@ -8,57 +8,42 @@ import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.html.HtmlInputText;
-
 
 @ManagedBean(name = "cadastrar")
 @ViewScoped
 
 public class CadastraFilme {
+
     private String titulo;
     private Date data;
     private int nota;
     private String descricao;
     private int quantidade;
-    
-    private HtmlInputText text;
-    
+
     private ArrayList<Filme> lista = new ArrayList<>();
     FilmesDAO con = new FilmesDAO();
-    
-   
-    
-    public String telaAluguel(){
+
+    public String telaAluguel() {
         return "aluguel";
     }
-    
-    public void exibeFilmes(){
+
+    public void exibeFilmes() {
         lista.clear();
         lista.addAll(con.listFilmes());
     }
-    
-    public void cancelar(){
-        System.out.println("Entrou em cancelar");
-        titulo = "";
-        data = null;
-        nota = 0;
-        descricao = "";
-        quantidade = 0;
-        
-        text.setLabel("");
-        text.setTitle("entrou");
-       
+
+    public String cancelar() {
+        return "cancelado";
     }
-            
-    
-    public void cadastrarFilme(){
+
+    public void cadastrarFilme() {
         System.out.println("ENTROU EM CADASTRARFILME");
         //covertendo java.util.date para java.sql.date
         data = new java.util.Date();
         java.sql.Date dataSql = new java.sql.Date(data.getTime());
-        
+
         con.insertIntoFilmes(titulo, dataSql, nota, descricao, quantidade);
-        
+
         //exibeFilmes();
     }
 
@@ -101,7 +86,7 @@ public class CadastraFilme {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    
+
     public ArrayList<Filme> getLista() {
         return lista;
     }
@@ -110,13 +95,4 @@ public class CadastraFilme {
         this.lista = lista;
     }
 
-    public HtmlInputText getText() {
-        return text;
-    }
-
-    public void setText(HtmlInputText text) {
-        this.text = text;
-    }
-
-    
 }

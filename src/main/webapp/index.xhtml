@@ -17,7 +17,13 @@
         <div class="logo" align="center">
             <p:outputLabel value="Cadastro de filmes" />
         </div>
+        <div class="botao">
 
+            <h:form>
+                <p:commandButton class="botao" value="Aluguel de filmes" action="#{cadastrar.telaAluguel()}"  />
+            </h:form>
+
+        </div>
         #{cadastrar.exibeFilmes()}
 
         <h1> <p:outputLabel style="color: grey" value="Cadastre seu filme:" /> </h1> <br/>
@@ -29,7 +35,7 @@
 
                     <p:outputLabel style="color: #ffffff" value="Titulo: " />
                     <p:inputText id="fTitulo" value="#{cadastrar.titulo}" required="true" 
-                                 requiredMessage="É obrigatório colocar um titulo" binding="#{cadastrar.text}"/>                              
+                                 requiredMessage="É obrigatório colocar um titulo" />                              
 
 
                     <p:outputLabel style="color: #ffffff" value="Data de lançamento: " />
@@ -62,7 +68,7 @@
                 <p:toolbar class="ui-custompanelgrid">
                     <p:toolbarGroup style="margin-right: 10%">
                         <p:commandButton type="submit" value="enviar" action="#{cadastrar.cadastrarFilme()}" update="@form" />
-                        <p:commandButton value="Cancelar" action="#{cadastrar.cancelar()}" update="@all" immediate="true" />
+                        <p:commandButton value="Cancelar" action="#{cadastrar.cancelar()}" immediate="true" />
 
                     </p:toolbarGroup>
                 </p:toolbar>
@@ -74,6 +80,7 @@
             </h:form>
 
         </div>
+         
         <br/> <br/>
         <div class="tabela">
             <p:dataTable id="dataTable" value="#{cadastrar.lista}" var="f" >
@@ -105,9 +112,7 @@
             </p:dataTable>
 
         </div>
-        <h:form>
-            <p:commandButton value="Aluguel de filmes" action="#{cadastrar.telaAluguel()}"  />
-        </h:form>
+       
 
 
 

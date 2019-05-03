@@ -17,6 +17,18 @@ font-size: 25px; /*tamanho da fonte do panelGrid*/
 
 
 }
+
+.botao{
+font-weight: bold;
+background: #373737 url("../resources/css/bg.png") 0 0 repeat; /*coloca imagem no fundo*/
+/*background-color: #a8a7a8 !important;*/  /*outra forma*/
+font-size: 25px; /*tamanho da fonte do panelGrid*/
+float: right;
+width: 50%;
+height: 20px;
+}
+
+
 .logo{
 color:gray;
 font-size: 50px;

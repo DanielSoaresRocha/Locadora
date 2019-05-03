@@ -48,7 +48,7 @@
                     <f:facet name="header">Ação</f:facet>
                     
                     <p:commandButton disabled="#{f.quantidade le 0}" value="Adicionar" action="#{aluguel.inserirCesta(f.id)}"
-                                     update="dataTable"> 
+                                     update="@all"> 
                                                                                               
                 </p:commandButton>
                 </p:column>
