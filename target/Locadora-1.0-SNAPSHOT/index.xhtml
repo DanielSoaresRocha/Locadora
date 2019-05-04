@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+﻿<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -16,17 +16,21 @@
 
         <div class="logo" align="center">
             <p:outputLabel value="Cadastro de filmes" />
-        </div>
+        </div> 
+	<br/> <br/>
         <div class="botao">
 
             <h:form>
-                <p:commandButton class="botao" value="Aluguel de filmes" action="#{cadastrar.telaAluguel()}"  />
+                <p:commandButton value="Aluguel de filmes" action="#{cadastrar.telaAluguel()}"  />
             </h:form>
 
         </div>
         #{cadastrar.exibeFilmes()}
-
+        <br/> <br/> <br/>
+        <div class="outro">
         <h1> <p:outputLabel style="color: grey" value="Cadastre seu filme:" /> </h1> <br/>
+            
+        </div>
 
 
         <div class="cadastro">
@@ -67,7 +71,7 @@
                 </p:panelGrid>
                 <p:toolbar class="ui-custompanelgrid">
                     <p:toolbarGroup style="margin-right: 10%">
-                        <p:commandButton type="submit" value="enviar" action="#{cadastrar.cadastrarFilme()}" update="@form" />
+                        <p:commandButton type="submit" value="enviar" action="#{cadastrar.cadastrarFilme()}" update="@all" />
                         <p:commandButton value="Cancelar" action="#{cadastrar.cancelar()}" immediate="true" />
 
                     </p:toolbarGroup>
