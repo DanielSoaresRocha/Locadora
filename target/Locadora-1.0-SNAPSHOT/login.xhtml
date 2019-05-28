@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:f2="http://java.sun.com/jsf/core"
+      >
+    <h:head>
+        <title>Login</title>
+        <link rel="stylesheet" href="resources/css/login.css"/>
+        <link rel="stylesheet" href="resources/css/style.css"/>
+    </h:head>
+    <h:body>
+        <div class="logo"> 
+            <center>Faça seu login</center>
+        </div>
+
+        <div class="center">
+            <h:form>
+
+                <p:panelGrid id="grid" class="ui-custompanelgrid" columns="2">
+                    <p:outputLabel style="color: white;" value="Usuário:" />
+                    <p:inputText value="#{login.usuario.user}"/>
+
+                    <p:outputLabel style="color: white;" value="Senha:"/>
+                    <p:password value="#{login.usuario.senha}"/>
+
+                    <p:outputLabel />
+                    <p:commandButton value="Entrar" action="#{login.salvar()}" update="grid" />
+                    
+                    <p:outputLabel />
+                    <p:commandButton value="Mostrar" action="#{login.mostrarUsuariosConsole()}" />
+                </p:panelGrid>
+            </h:form>
+        </div> 
+
+        <h:form>
+            <p:commandButton value="Voltar" action="index.xhtml"  />
+        </h:form>
+    </h:body>
+</html>
+
